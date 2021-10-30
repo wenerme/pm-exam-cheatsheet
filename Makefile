@@ -9,3 +9,4 @@ lint:
 
 ci-build:
 	npm ci --prefer-offline --no-audit
+	npm run build
