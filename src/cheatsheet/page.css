@@ -1,0 +1,13 @@
+@page {
+  size: A4;
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+
+  .screen-o {
+    display: none;
+  }
+}
