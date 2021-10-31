@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { ProcessCount } from './ProcessCount';
+import { Count } from './Count';
 import { data, groupNames } from './data';
 
 export const ProcessTable = (props) => {
@@ -15,12 +15,12 @@ export const ProcessTable = (props) => {
         <tr>
           <th>
             知识领域
-            <ProcessCount>{data.processes.length}</ProcessCount>
+            <Count>{data.processes.length}</Count>
           </th>
           {data.groups.map((v) => (
             <th key={v.name}>
               {v.name}
-              <ProcessCount>{v.processCount}</ProcessCount>
+              <Count>{v.processCount}</Count>
             </th>
           ))}
         </tr>
@@ -31,7 +31,7 @@ export const ProcessTable = (props) => {
             <tr key={i}>
               <td>
                 <span className={'font-semibold'}>{v.name}</span>
-                <ProcessCount>{v.processCount}</ProcessCount>
+                <Count>{v.processCount}</Count>
               </td>
               {groupNames.map((n) => (
                 <td key={n}>

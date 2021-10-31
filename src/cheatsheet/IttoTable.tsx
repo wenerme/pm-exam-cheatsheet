@@ -3,8 +3,11 @@ import React from 'react';
 import { ProcessItem } from './ProcessItem';
 import { Process } from './typing';
 
-export const IttoTable: React.FC<{ process: Process }> = ({ process }) => {
-  const { in: input, out, tt } = process;
+const thStyle = {
+  fontWeight: 100,
+};
+const _IttoTable: React.FC<{ process: Process }> = ({ process }) => {
+  const { in: input = [], out = [], tt = [] } = process;
   const n = Math.max(input.length, out.length, tt.length);
 
   return (
@@ -14,12 +17,17 @@ export const IttoTable: React.FC<{ process: Process }> = ({ process }) => {
         'text-base',
       )}
     >
-      <caption>{process.name}</caption>
+      <caption>
+        <span className={'font-thin'}>
+          {process.group}/{process.domain.replaceAll('管理', '')}/
+        </span>
+        {process.name}
+      </caption>
       <thead>
         <tr>
-          <th>输入</th>
-          <th>工具</th>
-          <th>输出</th>
+          <th style={thStyle}>输入</th>
+          <th style={thStyle}>工具</th>
+          <th style={thStyle}>输出</th>
         </tr>
       </thead>
       <tbody>
@@ -44,3 +52,4 @@ export const IttoTable: React.FC<{ process: Process }> = ({ process }) => {
     </table>
   );
 };
+export const IttoTable = React.memo(_IttoTable);

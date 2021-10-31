@@ -1,7 +1,7 @@
 import React from 'react';
 import { usePageStore } from './store';
 
-export const ProcessCount: React.FC = ({ children }) => {
+export const Count: React.FC = ({ children }) => {
   const hide = usePageStore((v) => v.hideTableCount);
   if (hide) {
     return null;

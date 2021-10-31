@@ -36,39 +36,44 @@
   en: Cost Management Plan
 - name: 项目工作说明书
   alias:
-    - name: Project SWO
-    - name: Project Statement of Work
+  - name: Project SWO
+  - name: Project Statement of Work
 - name: 商业论证
   en: Business case
 - name: 协议
   en: Aggreements
   alias:
-    - name: 合同
+  - name: 合同
 - name: 事业环境因素
   en: Enterprise Environmental Factors
   alias:
-    - name: EEF
+  - name: EEF
 - name: 组织过程资产
   en: Organizational Process Assets
   alias:
-    - name: OPA
+  - name: OPA
 - name: 其他过程输出
   en: Outputs from other processes
 - name: 干系人管理计划
   en: Stackholder Management Plan
 - name: 启动
-  alias:
-  en: initiating
+  en: Initiating
 - name: 规划
   alias:
-    - name: 计划
-  en: planning
+  - name: 计划
+  en: Planning
 - name: 执行
-  en: execute
+  en: Execute
   alias:
 - name: 监控
-  en: monitoring & controlling
+  en: Monitoring & Controlling
   alias:
-    - name: 监督和控制
+  - name: 监督和控制
 - name: 收尾
-  en: closing
+  en: Closing
+- name: 创建WBS
+  alias:
+  - name: 制定WBS
+
+- name: 储备分析
+  en: Reserve analysis

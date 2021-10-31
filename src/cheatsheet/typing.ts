@@ -18,17 +18,23 @@ export interface Domain {
   执行: Process[];
   监控: Process[];
   收尾: Process[];
+
+  processes: Process[];
 }
 
 export interface ProcessGroup {
   name: string;
+  processes: Process[];
   processCount;
 }
 
 export interface ItemRef {
+  id: string;
+  refId: string;
   name: string;
   rate?: number;
-  html?;
+  highlight?: string;
+  mid?: ItemRef; // 中级
 
   process: string; // used by process
   as: 'in' | 'out' | 'tt'; // used as
@@ -43,4 +49,8 @@ export interface Dataset {
   domains: Domain[];
   groups: ProcessGroup[];
   processes: Process[];
+  items: Item[];
+  itemRefs: ItemRef[];
+
+  processByName: Record<string, Process>;
 }

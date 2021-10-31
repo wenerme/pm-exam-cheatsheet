@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import domainsRaw from './domains.yaml';
 import processesRaw from './processes.yaml';
 import { Dataset, Domain, Process, ProcessGroup } from './typing';
@@ -47,14 +48,47 @@ function buildData() {
     domains: domains,
     groups: groups,
     processes,
+    items: [],
+    itemRefs: [],
+    processByName: {},
   };
 
   for (const group of groups) {
-    group.processCount = processes.filter((v) => v.group === group.name).length;
+    group.processes = processes.filter((v) => v.group === group.name);
+    group.processCount = group.processes.length;
   }
   for (const domain of domains) {
-    domain.processCount = processes.filter((v) => v.domain === domain.name).length;
+    domain.processes = processes.filter((v) => v.domain === domain.name);
+    domain.processCount = domain.processes.length;
   }
+  for (const process of processes) {
+    process.in.forEach((v) => {
+      v.as = 'in';
+      v.process = process.name;
+    });
+    process.out.forEach((v) => {
+      v.as = 'out';
+      v.process = process.name;
+    });
+    process.tt.forEach((v) => {
+      v.as = 'tt';
+      v.process = process.name;
+    });
+  }
+  const refs = (ds.itemRefs = processes.flatMap((v) => [v.in, v.tt, v.out]).flat());
+  for (const ref of refs) {
+    const name = ref.name || ref.mid?.name || '';
+    ref.id ||= `${ref.process}/${ref.as}/${name}`;
+    ref.refId ||= name;
+  }
+  const items = (ds.items = Object.values(_.groupBy(refs, (v) => v.refId)).map((v) => {
+    return {
+      name: v[0].name,
+      refs: v,
+    };
+  }));
+
+  ds.processByName = Object.fromEntries(ds.processes.map((v) => [v.name, v]));
   window['data'] = ds;
   return ds;
 }
