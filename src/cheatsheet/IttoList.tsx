@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from '@blueprintjs/core';
+import { Checkbox, Radio, RadioGroup } from '@blueprintjs/core';
 import React from 'react';
 import { useImmer } from 'use-immer';
 import { ControlAnchor } from './ControlAnchor';

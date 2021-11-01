@@ -1,10 +1,13 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { ProcessItem } from './ProcessItem';
 import { Process } from './typing';
 
 const thStyle = {
   fontWeight: 100,
+};
+const tdStyle: CSSProperties = {
+  padding: '2px 4px',
 };
 const _IttoTable: React.FC<{ process: Process }> = ({ process }) => {
   const { in: input = [], out = [], tt = [] } = process;
@@ -18,10 +21,10 @@ const _IttoTable: React.FC<{ process: Process }> = ({ process }) => {
       )}
     >
       <caption>
-        <span className={'font-thin'}>
-          {process.group}/{process.domain.replaceAll('管理', '')}/
+        <span className={'text-xs font-thin print:font-normal'}>
+          {process.domain.replaceAll('管理', '')}/{process.group}/
         </span>
-        {process.name}
+        <span className={'print:font-bold'}>{process.name}</span>
       </caption>
       <thead>
         <tr>
@@ -36,13 +39,13 @@ const _IttoTable: React.FC<{ process: Process }> = ({ process }) => {
           .map((_, i) => {
             return (
               <tr key={i}>
-                <td>
+                <td style={tdStyle}>
                   <ProcessItem value={input[i]} />
                 </td>
-                <td>
+                <td style={tdStyle}>
                   <ProcessItem value={tt[i]} />
                 </td>
-                <td>
+                <td style={tdStyle}>
                   <ProcessItem value={out[i]} />
                 </td>
               </tr>

@@ -2,18 +2,14 @@ import create from 'zustand';
 
 export interface PageStore {
   hideTableCount?: boolean;
-  conflictPrefer: string | 'mid' | 'hi' | 'pmp';
+  preferConflict: string | 'mid' | 'hi' | 'pmp';
+  preferAbbr?: boolean;
 }
 
 export const usePageStore = create<PageStore>(() => {
   return {
     hideTableCount: false,
-    conflictPrefer: 'mid',
+    preferConflict: 'mid',
+    preferAbbr: true,
   };
 });
-
-const conflictPrefer = (v) => v.conflictPrefer;
-
-export function useConflictPrefer() {
-  return usePageStore(conflictPrefer);
-}

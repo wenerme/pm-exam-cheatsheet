@@ -17,13 +17,16 @@ export const PageControl = () => {
         >
           隐藏数量
         </Checkbox>
+        <Checkbox checked={state.preferAbbr} onChange={() => usePageStore.setState({ preferAbbr: !state.preferAbbr })}>
+          缩写常见 ITTO
+        </Checkbox>
 
         <RadioGroup
           label="冲突显示"
           onChange={(e) => {
-            usePageStore.setState({ conflictPrefer: e.target['value'] });
+            usePageStore.setState({ preferConflict: e.target['value'] });
           }}
-          selectedValue={state.conflictPrefer}
+          selectedValue={state.preferConflict}
         >
           <Radio label="中项" value="mid" />
           <Radio label="高项" value="hi" />

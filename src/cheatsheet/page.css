@@ -11,3 +11,11 @@
     display: none;
   }
 }
+
+.page-break-avoid:not(tabel) {
+  /*page-break-inside: avoid;*/
+  /*break-inside: avoid;*/
+}
+table.page-break-avoid tr td, table.page-break-avoid tr th {
+  /*break-inside: avoid;*/
+}

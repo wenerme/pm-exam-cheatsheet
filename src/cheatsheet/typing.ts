@@ -40,9 +40,12 @@ export interface ItemRef {
   as: 'in' | 'out' | 'tt'; // used as
 }
 
-interface Item {
+export interface Item {
   name: string;
+  mid?: ItemRef;
   refs: ItemRef[];
+  abbr?: string;
+  as: 'in' | 'out' | 'tt' | 'io';
 }
 
 export interface Dataset {

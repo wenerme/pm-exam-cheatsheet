@@ -14,7 +14,8 @@
 - name: 制定项目管理计划
   in:
   - name: 项目章程
-  - name: 其他过程的输出结果
+  - name: 其他过程的输出
+    rate: 3
     mid:
       name: 其他规划过程的输出
   - name: EEF
@@ -87,7 +88,7 @@
   in:
   - name: 项目管理计划
   - name: 验收的可交付成果
-    highlight: 验收的
+    rate: 3
   - name: EEF
   tt:
   - name: 分析技术
@@ -95,6 +96,7 @@
   - name: 专家判断
   out:
   - name: 最终产品、服务或成果移交
+    rate: 3
     mid:
       name: 最终产品、服务或输出移交
   - name: 组织过程资产更新
@@ -444,8 +446,8 @@
   - name: 干系人登记册
   - name: 分析登记册
   - name: 需求文件
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 成本效益分析
   - name: 质量成本法
@@ -515,8 +517,8 @@
   in:
   - name: 项目管理计划
   - name: 活动资源需求
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 组织图和职位描述
     mid:
@@ -530,14 +532,14 @@
     rate: 3
     mid:
       name: 项目人力资源管理计划
-- name: 组件项目团队
+- name: 组建项目团队
   in:
   - name: 人力资源管理计划
     rate: 3
     mid:
       name: 项目人力资源管理计划
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 预分派
     mid:
@@ -628,8 +630,8 @@
       name: 项目沟通管理计划
   - name: 工作绩效报告
     hightlight: 报告
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 沟通技术
     rate: 3
@@ -673,8 +675,8 @@
   - name: 项目管理计划
   - name: 项目章程
   - name: 干系人登记册
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 分析技术
   - name: 专家判断
@@ -706,8 +708,8 @@
     rate: 3
   - name: 采购文件
     rate: 3
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 文档审查
   - name: 信息收集技术
@@ -726,8 +728,8 @@
   - name: 风险管理计划
   - name: 风险登记册
   - name: 范围基准
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 风险概率与影响评估
     highlight: 评估
@@ -754,6 +756,9 @@
   - name: 项目进度管理计划
     mid:
       name: 进度管理计划
+  - name: 风险登记册
+  - name: EEF
+  - name: OPA
   tt:
   - name: 数据收集和表示技术
     mid:
@@ -765,7 +770,7 @@
 
   out:
   - name: 项目文件更新
-    note: 风险登记册
+
 - name: 规划风险应对
   in:
   - name: 风险管理计划
@@ -774,7 +779,9 @@
   - name: 消极风险或威胁的应对策略
     rate: 3
   - name: 积极风险或威胁的应对策略
+    rate: 3
   - name: 应急应对策略
+    rate: 3
   - name: 专家判断
   out:
   - name: 项目管理计划更新
@@ -790,6 +797,7 @@
   tt:
   - name: 风险再评估
   - name: 风险审计
+    rate: 3
   - name: 偏差和趋势分析
   - name: 技术绩效测量
   - name: 储备分析
@@ -810,8 +818,8 @@
   - name: 项目进度
   - name: 活动成本估算
   - name: 干系人登记册
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 自制/外购分析
   - name: 专家判读
@@ -847,6 +855,7 @@
   - name: OPA
   tt:
   - name: 投标人会议
+    rate: 3
   - name: 建议书评价技术
   - name: 独立估算
   - name: 专家判断
@@ -874,9 +883,11 @@
   - name: 合同变更控制系统
   - name: 采购绩效审查
   - name: 检查与审计
+    rate: 3
   - name: 报告绩效
   - name: 支付系统
   - name: 索赔管理
+    rate: 3
   - name: 记录管理系统
   out:
   - name: 工作绩效信息
@@ -896,7 +907,7 @@
       name:
   tt:
   - name: 采购审计
-    highlight: 审计
+    rate: 3
   - name: 采购谈判
   - name: 记录管理系统
 
@@ -909,9 +920,9 @@
 - name: 识别干系人
   in:
   - name: 项目章程
-  - name: 采购文档
-  - name: OPA
+  - name: 采购文件
   - name: EEF
+  - name: OPA
   tt:
   - name: 干系人分析
   - name: 专家判断
@@ -923,8 +934,8 @@
   in:
   - name: 项目管理计划
   - name: 干系人登记册
-  - name: OPA
   - name: EEF
+  - name: OPA
   tt:
   - name: 专家判断
   - name: 组织相关会议

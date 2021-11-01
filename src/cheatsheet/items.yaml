@@ -7,3 +7,11 @@
 - name: 团队绩效评估
   mid:
   - name: 团队绩效评价
+- name: 事业环境因素
+  en: Enterprise Environmental Factors
+  abbr: EEF
+- name: 组织过程资产
+  en: Organizational Process Assets
+  abbr: OPA
+- name: 项目管理信息系统
+  abbr: PMIS

@@ -85,6 +85,7 @@ function buildData() {
     return {
       name: v[0].name,
       refs: v,
+      as: v[0].as,
     };
   }));
 
