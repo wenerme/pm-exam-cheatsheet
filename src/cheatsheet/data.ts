@@ -86,6 +86,9 @@ function buildData() {
     ref.name = name;
     ref.id ||= `${ref.process}/${ref.as}/${name}`;
     ref.refName ||= name;
+    if (name.endsWith('更新') && !ref.updates) {
+      ref.updates = Array.from(ref.updates ?? []).concat({ refName: name.substring(0, name.length - 2) } as any);
+    }
   }
 
   const ittoRawByName = _.keyBy(ittoRaw, 'name');
@@ -97,12 +100,21 @@ function buildData() {
       name: first.name,
       refs: v,
       as: as.length == 1 ? as[0].as : 'io',
+      updatedBy: [],
       ...found,
     };
   }));
+  const ittoByName = _.keyBy(items, 'name');
+  refs
+    .filter((v) => v.updates)
+    .forEach((v) => {
+      v.updates?.map(({ refName }) => {
+        return ittoByName[refName]?.updatedBy?.push(v) || console.warn('invalid ref', refName);
+      });
+    });
 
   ds.processByName = Object.fromEntries(ds.processes.map((v) => [v.name, v]));
-  ds.ittoByName = _.keyBy(items, 'name');
+  ds.ittoByName = ittoByName;
   window['data'] = ds;
   return ds;
 }

@@ -1,12 +1,12 @@
 - name: 人力资源管理计划
   mid:
-  - name: 项目人力资源管理计划
+    name: 项目人力资源管理计划
 - name: 项目人员分派
   mid:
-  - name: 项目人员分配表
+    name: 项目人员分配表
 - name: 团队绩效评估
   mid:
-  - name: 团队绩效评价
+    name: 团队绩效评价
 - name: 事业环境因素
   en: Enterprise Environmental Factors
   abbr: EEF

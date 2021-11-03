@@ -35,6 +35,7 @@ export interface IttoRef {
   rate?: number;
   highlight?: string;
   mid?: IttoRef; // 中级
+  updates?: Array<{ refName }>;
 
   process: string; // used by process
   as: 'in' | 'out' | 'tt'; // used as
@@ -45,6 +46,7 @@ export interface Itto {
   mid?: IttoRef;
   refs: IttoRef[];
   abbr?: string;
+  updatedBy: IttoRef[];
   as: 'in' | 'out' | 'tt' | 'io';
 }
 
