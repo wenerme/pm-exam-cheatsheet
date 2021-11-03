@@ -15,7 +15,9 @@ const Page: React.FC = ({ children }) => {
     <BlueprintStylePage>
       <PageControl />
       <div
-        className={'px-4 py-4 flex flex-col items-center gap-2 mx-auto relative border-l border-r print:border-none'}
+        className={
+          'px-4 py-4 pb-12 print:pb-0 flex flex-col items-center gap-2 mx-auto relative border-l border-r print:border-none'
+        }
         style={{ width: '29.7cm' }}
       >
         {children}
@@ -37,7 +39,7 @@ export const CheatSheetPage: React.FC = () => {
 
       <div className={'screen-only'}>
         <h5 className={'bp3-heading'}>ITTO 统计</h5>
-        <div>ITTO: {data.items.length}</div>
+        <div>ITTO: {data.itto.length}</div>
       </div>
 
       <h4 className={'bp3-heading'}>项目管理计划内容</h4>
@@ -53,10 +55,10 @@ export const CheatSheetPage: React.FC = () => {
         ))}
       </div>
       <h4 className={'bp3-heading'}>
-        工具和技术<Count>{data.items.filter((v) => v.as === 'tt').length}</Count>
+        工具和技术<Count>{data.itto.filter((v) => v.as === 'tt').length}</Count>
       </h4>
       <div className={'flex flex-wrap'}>
-        {data.items
+        {data.itto
           .filter((v) => v.as === 'tt')
           .sort((a, b) => b.refs.length - a.refs.length)
           .map((v, i) => (

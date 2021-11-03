@@ -1,6 +1,7 @@
 import { Button, Checkbox, Radio, RadioGroup } from '@blueprintjs/core';
 import React from 'react';
 import { HiAdjustments } from 'react-icons/hi';
+import { SelectedItem } from './SelectedItem';
 import { usePageStore } from './store';
 
 export const PageControl = () => {
@@ -31,6 +32,7 @@ export const PageControl = () => {
           <Radio label="中项" value="mid" />
           <Radio label="高项" value="hi" />
         </RadioGroup>
+        <SelectedItem />
         <div>
           <Button icon={'print'} text={'打印'} onClick={() => window.print()} />
         </div>

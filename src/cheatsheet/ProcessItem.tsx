@@ -1,14 +1,26 @@
 import classNames from 'classnames';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import Highlighter from 'react-highlight-words';
+import shallow from 'zustand/shallow';
+import { data } from './data';
 import { usePageStore } from './store';
-import { Item, ItemRef } from './typing';
+import { Itto, IttoRef } from './typing';
 
-function useItemPref() {
-  return usePageStore(({ preferConflict, preferAbbr }) => ({ preferConflict, preferAbbr }));
+function useItemPref(name) {
+  return usePageStore(
+    useCallback(
+      ({ preferConflict, preferAbbr, selectedName }) => ({
+        preferConflict,
+        preferAbbr,
+        selected: selectedName === name,
+      }),
+      [name],
+    ),
+    shallow,
+  );
 }
 
-export const ProcessItem: React.FC<{ value: ItemRef | Item } & React.HTMLAttributes<HTMLDivElement>> = ({
+export const ProcessItem: React.FC<{ value: IttoRef | Itto } & React.HTMLAttributes<HTMLDivElement>> = ({
   value,
   className,
   ...rest
@@ -16,17 +28,19 @@ export const ProcessItem: React.FC<{ value: ItemRef | Item } & React.HTMLAttribu
   if (!value) {
     return null;
   }
-  const { preferConflict: prefer, preferAbbr } = useItemPref();
-  const o: ItemRef = Object.assign({}, value, value[prefer]);
-  const { rate, highlight } = o;
+  const refName = value['refName'] || value.name;
+  const { preferConflict: prefer, preferAbbr, selected } = useItemPref(refName);
+  const o: IttoRef & Itto = Object.assign({}, data.ittoByName[refName], value, value[prefer]);
+  const { rate, highlight, abbr } = o;
   let name = o.name || '';
-  // if (value[prefer]) {
-  //   console.log(`conflict`, value, o);
-  // }
+  if (preferAbbr && abbr) {
+    name = abbr;
+  }
 
   const highlightClasses = 'text-red-500 print:text-black print:font-bold';
+  const selectedClasses = 'text-green-500 font-bold print:text-black print:font-normal';
   const props: React.HTMLAttributes<HTMLSpanElement> = {
-    className: classNames(className, rate && highlightClasses),
+    className: classNames(className, rate && highlightClasses, selected && selectedClasses),
     ...rest,
   };
   let conflictNote = '';
@@ -78,7 +92,20 @@ export const ProcessItem: React.FC<{ value: ItemRef | Item } & React.HTMLAttribu
     );
   }
   props.children = content;
-  return <span {...props} />;
+  return (
+    <span
+      onClick={() => {
+        if (refName !== usePageStore.getState().selectedName) {
+          usePageStore.setState({ selectedName: refName });
+        } else {
+          usePageStore.setState((s) => {
+            s.selectedName = undefined;
+          });
+        }
+      }}
+      {...props}
+    />
+  );
 };
 
 function isEmpty(v) {

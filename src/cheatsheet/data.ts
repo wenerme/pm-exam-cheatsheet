@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import domainsRaw from './domains.yaml';
+import ittoRaw from './itto.yaml';
 import processesRaw from './processes.yaml';
 import { Dataset, Domain, Process, ProcessGroup } from './typing';
 
@@ -48,9 +49,10 @@ function buildData() {
     domains: domains,
     groups: groups,
     processes,
-    items: [],
-    itemRefs: [],
+    itto: [],
+    ittoRef: [],
     processByName: {},
+    ittoByName: {},
   };
 
   for (const group of groups) {
@@ -75,21 +77,32 @@ function buildData() {
       v.process = process.name;
     });
   }
-  const refs = (ds.itemRefs = processes.flatMap((v) => [v.in, v.tt, v.out]).flat());
+  const ittoRawByAbbr = _.keyBy(ittoRaw, 'abbr');
+  const refs = (ds.ittoRef = processes.flatMap((v) => [v.in, v.tt, v.out]).flat());
   for (const ref of refs) {
-    const name = ref.name || ref.mid?.name || '';
+    let name = ref.name || ref.mid?.name || '';
+    // 替换 abbr 为 name
+    name = ittoRawByAbbr[name]?.name || name;
+    ref.name = name;
     ref.id ||= `${ref.process}/${ref.as}/${name}`;
-    ref.refId ||= name;
+    ref.refName ||= name;
   }
-  const items = (ds.items = Object.values(_.groupBy(refs, (v) => v.refId)).map((v) => {
+
+  const ittoRawByName = _.keyBy(ittoRaw, 'name');
+  const items = (ds.itto = Object.values(_.groupBy(refs, 'refName')).map((v) => {
+    const first = v[0];
+    const found = ittoRawByName[first.refName];
+    const as = _.uniqBy(v, 'as');
     return {
-      name: v[0].name,
+      name: first.name,
       refs: v,
-      as: v[0].as,
+      as: as.length == 1 ? as[0].as : 'io',
+      ...found,
     };
   }));
 
   ds.processByName = Object.fromEntries(ds.processes.map((v) => [v.name, v]));
+  ds.ittoByName = _.keyBy(items, 'name');
   window['data'] = ds;
   return ds;
 }

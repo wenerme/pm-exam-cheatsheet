@@ -408,6 +408,7 @@
   tt:
   - name: 专家判断
   - name: 成本汇总
+    rate: 3
   - name: 储备分析
     rate: 3
   - name: 历史关系
@@ -549,12 +550,12 @@
   - name: 虚拟团队
   - name: 多标准决策分析
     mid:
-      name: 多纬决策分析
+      name: 多维决策分析
   out:
   - name: 项目人员分派
     rate: 3
     mid:
-      name: 项目人员分派表
+      name: 项目人员分配表
   - name: 资源日历
   - name: 项目管理计划更新
     mid:
@@ -714,6 +715,7 @@
   - name: 文档审查
   - name: 信息收集技术
   - name: 核对表分析
+    rate: 3
     mid:
       name: 核对单分析
   - name: 假设分析
@@ -732,13 +734,16 @@
   - name: OPA
   tt:
   - name: 风险概率与影响评估
-    highlight: 评估
+    rate: 3
     mid:
       name: 风险概率和影响评估
   - name: 概率和影响矩阵
+    rate: 3
   - name: 风险数据质量评估
+    rate: 3
   - name: 风险分类
   - name: 风险紧迫性评估
+    rate: 3
   - name: 专家判断
 
   out:
@@ -761,9 +766,11 @@
   - name: OPA
   tt:
   - name: 数据收集和表示技术
+    rate: 3
     mid:
       name: 数据收集和展示技术
   - name: 定量风险分析和建模技术
+    rate: 3
     mid:
       name: 定量风险分析和模型技术
   - name: 专家判断
@@ -821,27 +828,23 @@
   - name: EEF
   - name: OPA
   tt:
-  - name: 自制/外购分析
+  - name: 自制或外购分析
   - name: 专家判读
   - name: 市场调研
   - name: 会议
   out:
-  - name: 采购计划
-    mid:
-      name: 采购管理计划
-      rate: 3
+  - name: 采购管理计划
+    rate: 3
   - name: 采购工作说明书
     rate: 3
   - name: 采购文件
   - name: 供方选择标准
-  - name: 自制/外购决策
+  - name: 自制或外购决策
   - name: 变更请求
   - name: 可能的项目文件更新
 - name: 实施采购
   in:
-  - name: 采购计划
-    mid:
-      name: 采购管理计划
+  - name: 采购管理计划
   - name: 采购工作说明书
   - name: 采购文件
   - name:
@@ -849,7 +852,7 @@
       name: 供方选择标准
   - name:
     mid:
-      name: 自制/外购决策
+      name: 自制或外购决策
   - name: 卖方建议书
   - name: 项目文件
   - name: OPA

@@ -5,9 +5,9 @@ export interface Process {
   domain: string;
   group: string;
 
-  in: ItemRef[];
-  tt: ItemRef[];
-  out: ItemRef[];
+  in: IttoRef[];
+  tt: IttoRef[];
+  out: IttoRef[];
 }
 
 export interface Domain {
@@ -28,22 +28,22 @@ export interface ProcessGroup {
   processCount;
 }
 
-export interface ItemRef {
+export interface IttoRef {
   id: string;
-  refId: string;
+  refName: string;
   name: string;
   rate?: number;
   highlight?: string;
-  mid?: ItemRef; // 中级
+  mid?: IttoRef; // 中级
 
   process: string; // used by process
   as: 'in' | 'out' | 'tt'; // used as
 }
 
-export interface Item {
+export interface Itto {
   name: string;
-  mid?: ItemRef;
-  refs: ItemRef[];
+  mid?: IttoRef;
+  refs: IttoRef[];
   abbr?: string;
   as: 'in' | 'out' | 'tt' | 'io';
 }
@@ -52,8 +52,9 @@ export interface Dataset {
   domains: Domain[];
   groups: ProcessGroup[];
   processes: Process[];
-  items: Item[];
-  itemRefs: ItemRef[];
+  itto: Itto[];
+  ittoRef: IttoRef[];
 
   processByName: Record<string, Process>;
+  ittoByName: Record<string, Itto>;
 }
