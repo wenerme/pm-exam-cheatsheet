@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import { BlueprintStylePage } from '../components/BlueprintStylePage';
 import { ControlAnchor } from './ControlAnchor';
@@ -15,10 +16,10 @@ const Page: React.FC = ({ children }) => {
     <BlueprintStylePage>
       <PageControl />
       <div
-        className={
-          'px-4 py-4 pb-12 print:pb-0 flex flex-col items-center gap-2 mx-auto relative border-l border-r print:border-none'
-        }
-        style={{ width: '29.7cm' }}
+        className={classNames(
+          'px-4 py-4 pb-12 print:pb-0 flex flex-col items-center gap-2 mx-auto relative border-l border-r print:border-none',
+          'print:w-a4w',
+        )}
       >
         {children}
       </div>

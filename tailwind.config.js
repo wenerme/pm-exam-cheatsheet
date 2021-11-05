@@ -7,6 +7,10 @@ module.exports = {
       screens: {
         print: { raw: 'print' },
       },
+      spacing: {
+        a4w: '210mm',
+        a4h: '296mm',
+      },
     },
   },
   variants: {

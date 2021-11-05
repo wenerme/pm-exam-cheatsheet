@@ -36,6 +36,7 @@ export interface IttoRef {
   highlight?: string;
   mid?: IttoRef; // 中级
   updates?: Array<{ refName }>;
+  relates?: Array<{ refName; rel: 'update' | 'rel' }>;
 
   process: string; // used by process
   as: 'in' | 'out' | 'tt'; // used as

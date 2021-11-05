@@ -7,7 +7,7 @@ import { usePageStore } from './store';
 export const PageControl = () => {
   const state = usePageStore();
   return (
-    <div className={'fixed right-4 top-4 screen-only z-50'}>
+    <div className={'fixed right-4 top-4 screen-only z-50 hidden md:block'}>
       <div className={'px-2 py-4 rounded bg-gray-200 w-40 flex flex-col gap-1'}>
         <h4 className={'bp3-heading'}>
           <HiAdjustments />

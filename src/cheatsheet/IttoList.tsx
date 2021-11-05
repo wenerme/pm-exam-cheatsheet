@@ -37,7 +37,7 @@ const IttoGroup: React.FC<{ value: Domain | ProcessGroup }> = ({ value }) => {
       <h5 className={'bp3-heading mt-4'}>
         <a>{value.name}</a>
       </h5>
-      <div className={'grid grid-cols-3 gap-x-1 gap-y-4 items-start'}>
+      <div className={'grid md:grid-cols-2 xl:grid-cols-3 print:grid-cols-3 gap-x-1 gap-y-4 items-start'}>
         {value.processes.map((v) => {
           return <IttoTable key={v.name} process={v} />;
         })}

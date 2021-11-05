@@ -173,9 +173,9 @@
   - name: 项目管理计划
   - name: 需求文件
   - name: 需求跟踪矩阵
-  - name: 确认的可交付成果
-    mid:
-      name: 核实的可交付成果
+  - name: 核实的可交付成果
+    hi:
+      name: 确认的可交付成果
   - name: 工作绩效数据
   tt:
   - name: 检查
@@ -226,12 +226,15 @@
   - name: OPA
   tt:
   - name: 分解
+    rate: 3
   - name: 滚动式规划
   - name: 专家判断
   out:
   - name: 活动清单
+    rate: 3
   - name: 活动属性
   - name: 里程碑清单
+    rate: 3
 - name: 排列活动顺序
   in:
   - name: 进度管理计划
@@ -242,36 +245,20 @@
   - name:
     mid:
       name: OPA
+    hi:
+      name:
   - name: EEF
   tt:
   - name: 前导图法
+    rate: 3
   - name: 箭线图法
+    rate: 3
   - name: 确定依赖关系
+    rate: 3
   - name: 提前量和滞后量
+    rate: 3
   out:
   - name: 项目进度网络图
-  - name: 项目文件更新
-- name: 估算活动持续时间
-  in:
-  - name: 进度管理计划
-  - name: 活动清单
-  - name: 活动属性
-  - name: 活动资源需求
-  - name: 资源日历
-  - name: 项目范围说明书
-  - name: 风险登记册
-  - name: 资源分解结构
-  - name: EEF
-  - name: OPA
-  tt:
-  - name: 专家判断
-  - name: 类比估算
-  - name: 参数估算
-  - name: 三点估算
-  - name: 群体决策技术
-  - name: 储备分析
-  out:
-  - name: 活动持续时间估算
   - name: 项目文件更新
 - name: 估算活动资源
   in:
@@ -291,7 +278,34 @@
   - name: 自下而上估算
   out:
   - name: 活动资源需求
+    rate: 3
   - name: 资源分解结构
+    rate: 3
+  - name: 项目文件更新
+- name: 估算活动持续时间
+  in:
+  - name: 进度管理计划
+  - name: 活动清单
+  - name: 活动属性
+  - name: 活动资源需求
+  - name: 资源日历
+  - name: 项目范围说明书
+  - name: 风险登记册
+  - name: 资源分解结构
+  - name: EEF
+  - name: OPA
+  tt:
+  - name: 专家判断
+  - name: 类比估算
+    rate: 3
+  - name: 参数估算
+    rate: 3
+  - name: 三点估算
+    rate: 3
+  - name: 群体决策技术
+  - name: 储备分析
+  out:
+  - name: 活动持续时间估算
   - name: 项目文件更新
 - name: 制定进度计划
   in:
@@ -310,13 +324,16 @@
   - name: OPA
   tt:
   - name: 进度网络分析
-    rate: 3
   - name: 关键路径法
+    rate: 3
   - name: 关键链法
+    rate: 3
   - name: 资源优化技术
+    rate: 3
   - name: 建模技术
   - name: 提前量和滞后量
   - name: 进度压缩
+    rate: 3
   - name: 进度计划编制工具
   out:
   - name: 进度基准
@@ -339,6 +356,7 @@
   - name: OPA
   tt:
   - name: 绩效审查
+    rate: 3
   - name: 项目管理软件
   - name: 资源优化技术
   - name: 建模技术
